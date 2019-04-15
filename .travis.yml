@@ -1,0 +1,6 @@
+language: generic
+services:
+  - docker
+script:
+    - docker build -t test-image .
+    - docker run -ti -v /run/docker.sock:/run/docker.sock test-image

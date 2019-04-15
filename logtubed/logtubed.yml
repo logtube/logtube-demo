@@ -1,0 +1,34 @@
+verbose: false
+
+input_redis:
+  enabled: true
+  bind: 0.0.0.0:6379
+  multi: false
+  time_offset: -8
+
+input_sptp:
+  enabled: true
+  bind: 0.0.0.0:9921
+
+topics:
+  keyword_required:
+    - info
+  ignored:
+    - debug
+
+queue:
+  dir: /data/xlogd
+  name: xlogd
+  sync_every: 1000
+
+output_es:
+  enabled: true
+  urls:
+    - http://elasticsearch:9200
+  batch_size: 100
+  batch_rate: 1000
+  batch_burst: 10000
+
+output_local:
+  enabled: true
+  dir: /data/xlogd_local
