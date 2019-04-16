@@ -41,10 +41,18 @@ docker run -d --name filebeat -v logs-app:/var/www/logs --link logtubed filebeat
 sleep 10
 
 # print logs
+echo "==================== ElasticSearch Logs ===================="
+
 docker logs elasticsearch
+
+echo "==================== Logtube Logs ===================="
 
 docker logs logtubed
 
+echo "==================== App Logs ===================="
+
 docker logs app
+
+echo "==================== Filebeat Logs ===================="
 
 docker logs filebeat
