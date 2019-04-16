@@ -87,3 +87,15 @@ echo "=           = Stress Logs =            ="
 echo "========================================"
 
 docker logs stress
+
+echo "========================================"
+echo "=         = App Log Files =            ="
+echo "========================================"
+
+docker run -ti -v logs-app:/usr/local/tomcat/logs alpine:3.9 find /usr/local/tomcat/logs
+
+echo "========================================"
+echo "=        = Central Log Files =         ="
+echo "========================================"
+
+docker run -ti -v logs-central:/var/log/logtubed-logs alpine:3.9 find /var/log/logtubed-logs
