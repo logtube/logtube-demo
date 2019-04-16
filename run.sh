@@ -23,6 +23,12 @@ cd logtubed && \
     docker build -t logtubed . && \
     cd ..
 
+# build image for stress
+cd stress && \
+    go build -o stress && \
+    docker build -t stress . && \
+    cd ..
+
 # build image for filebeat
 cd filebeat && \
     docker build -t filebeat . && \
@@ -31,14 +37,21 @@ cd filebeat && \
 # create logtubed <- elasticsearch
 docker run -d --name logtubed -v logs-central:/data/xlogd_local --link elasticsearch logtubed
 
+sleep 10
+
 # create app <- logtubed
 docker run -d --name app -v logs-app:/usr/local/tomcat/logs --link logtubed app
+
+sleep 10
 
 # create filebeat <- logtubed
 docker run -d --name filebeat -v logs-app:/var/www/logs --link logtubed filebeat
 
-# sleep 10
 sleep 10
+
+# create stress
+
+docker run -d --name stress --link app stress
 
 # print logs
 echo "==================== ElasticSearch Logs ===================="
@@ -54,5 +67,9 @@ echo "==================== App Logs ===================="
 docker logs app
 
 echo "==================== Filebeat Logs ===================="
+
+docker logs filebeat
+
+echo "==================== Stress Logs ===================="
 
 docker logs filebeat
