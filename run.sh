@@ -51,7 +51,9 @@ sleep 10
 
 # create stress
 
-docker run -d --name stress --link app stress
+docker run -ti --name stress --link app stress
+
+sleep 10
 
 # print logs
 echo "========================================"
