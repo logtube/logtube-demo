@@ -54,22 +54,36 @@ sleep 10
 docker run -d --name stress --link app stress
 
 # print logs
-echo "==================== ElasticSearch Logs ===================="
+echo "========================================"
+echo "=             = Result =               ="
+echo "========================================"
+echo
+echo "========================================"
+echo "=       = ElasticSearch Logs =         ="
+echo "========================================"
 
-docker logs elasticsearch
+edocker logs elasticsearch
 
-echo "==================== Logtube Logs ===================="
+echo "========================================"
+echo "=          = Logtube Logs =            ="
+echo "========================================"
 
 docker logs logtubed
 
-echo "==================== App Logs ===================="
+echo "========================================"
+echo "=            = App Logs =              ="
+echo "========================================"
 
 docker logs app
 
-echo "==================== Filebeat Logs ===================="
+echo "========================================"
+echo "=          = Filebeat Logs =           ="
+echo "========================================"
 
 docker logs filebeat
 
-echo "==================== Stress Logs ===================="
+echo "========================================"
+echo "=           = Stress Logs =            ="
+echo "========================================"
 
-docker logs filebeat
+docker logs stress
