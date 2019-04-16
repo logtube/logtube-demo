@@ -1,7 +1,7 @@
 filebeat.inputs:
   - type: log
     paths:
-        - /var/www/logs/test/**
+        - /usr/local/tomcat/logs/test/**
     # match multiline
     multiline.pattern: '^\[\d{4}(/|-)\d{2}(/|-)\d{2} \d{2}:\d{2}:\d{2}.\d{3}'
     multiline.negate: true

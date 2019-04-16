@@ -18,4 +18,4 @@ ADD filebeat.yml /usr/local/filebeat/filebeat.yml
 
 RUN chmod 644 filebeat.yml
 
-CMD ["./filebeat", "run"]
+CMD ["./filebeat", "run", "-e"]

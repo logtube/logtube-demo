@@ -45,7 +45,7 @@ docker run -d --name app -v logs-app:/usr/local/tomcat/logs --link logtubed app
 sleep 10
 
 # create filebeat <- logtubed
-docker run -d --name filebeat -v logs-app:/var/www/logs --link logtubed filebeat
+docker run -d --name filebeat -v logs-app:/usr/local/tomcat/logs --link logtubed filebeat
 
 sleep 10
 
