@@ -8,6 +8,10 @@ docker volume create logs-central
 docker volume create logs-app
 
 # create elasticsearch
+docker pull elasticsearch:6.7.1 > /dev/null
+docker pull alpine:3.9 > /dev/null
+docker pull centos:7 > /dev/null
+
 docker run -d --name elasticsearch -e "discovery.type=single-node" elasticsearch:6.7.1
 
 # build image for app
