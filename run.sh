@@ -12,26 +12,26 @@ docker run -d --name elasticsearch -e "discovery.type=single-node" elasticsearch
 
 # build image for app
 cd app && \
-    mvn -DskipTests=true package && \
-    docker build -t app . && \
+    mvn -DskipTests=true package > /dev/null && \
+    docker build -t app . > /dev/null && \
     cd ..
 
 # build image for logtubed
 cd logtubed && \
-    go get -u github.com/logtube/logtubed && \
-    go build -o logtubed github.com/logtube/logtubed && \
-    docker build -t logtubed . && \
+    go get -u github.com/logtube/logtubed > /dev/null && \
+    go build -o logtubed github.com/logtube/logtubed > /dev/null && \
+    docker build -t logtubed . > /dev/null && \
     cd ..
 
 # build image for stress
 cd stress && \
-    go build -o stress && \
-    docker build -t stress . && \
+    go build -o stress > /dev/null && \
+    docker build -t stress . > /dev/null && \
     cd ..
 
 # build image for filebeat
 cd filebeat && \
-    docker build -t filebeat . && \
+    docker build -t filebeat . > /dev/null && \
     cd ..
 
 # create logtubed <- elasticsearch
@@ -49,9 +49,9 @@ docker run -d --name filebeat -v logs-app:/usr/local/tomcat/logs --link logtubed
 
 sleep 10
 
-# create stress
+# run stress
 
-docker run -ti --name stress --link app stress
+docker run -ti --name stress --link app stress &> /dev/null
 
 sleep 10
 

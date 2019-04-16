@@ -11,7 +11,7 @@ func main() {
 	var err error
 	var resp *http.Response
 
-	for i := 0; i < 500; i++ {
+	for i := 0; i < 100; i++ {
 		if resp, err = http.Get("http://app:8080/"); err != nil {
 			panic(err)
 		}
