@@ -19,6 +19,6 @@ func main() {
 		for k, v := range resp.Header {
 			fmt.Println("  " + k + " = " + strings.Join(v, ", "))
 		}
-		_ := resp.Body.Close()
+		_ = resp.Body.Close()
 	}
 }
