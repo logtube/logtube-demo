@@ -1,0 +1,13 @@
+filebeat.inputs:
+  - type: log
+    paths:
+        - /var/www/logs/**/*.log
+    # match multiline
+    multiline.pattern: '^\[\d{4}(/|-)\d{2}(/|-)\d{2} \d{2}:\d{2}:\d{2}.\d{3}'
+    multiline.negate: true
+    multiline.match: after
+output.redis:
+  hosts:
+      - logtubed
+  datatype: "list"
+  key: "xlog"
