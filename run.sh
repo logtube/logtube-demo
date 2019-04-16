@@ -62,7 +62,7 @@ echo "========================================"
 echo "=       = ElasticSearch Logs =         ="
 echo "========================================"
 
-edocker logs elasticsearch
+docker logs elasticsearch
 
 echo "========================================"
 echo "=          = Logtube Logs =            ="
